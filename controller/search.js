@@ -4,6 +4,7 @@ const logger = require('pelias-logger').get('api');
 const logging = require( '../helper/logging' );
 const retry = require('retry');
 const Debug = require('../helper/debug');
+const customQuery = require('../query/custom_query');
 
 function isRequestTimeout(err) {
   return _.get(err, 'status') === 408;
@@ -27,7 +28,10 @@ function setup( peliasConfig, esclient, query, should_execute ){
     // rendering a query requires passing the `clean` object, which contains
     // validated options from query parameters, and the `res` object, since
     // some queries use the results of previous queries to Placeholder
-    const renderedQuery = query(req.clean, res);
+    // const renderedQuery = query(req.clean, res);
+    const renderedQuery = customQuery(req.clean);
+    logger.info('req');
+    logger.info(JSON.stringify(req.clean));
 
     // if there's no query to call ES with, skip the service
     if (_.isUndefined(renderedQuery)) {
@@ -150,7 +154,7 @@ function setup( peliasConfig, esclient, query, should_execute ){
             }
           }});
         }
-        logger.debug('[ES response]', docs);
+        // logger.debug('[ES response]', docs);
         if (req.clean.enableElasticDebug) {
           debugLog.push(req, { ES_response: _.cloneDeep({ docs, meta, data }) });
         }
