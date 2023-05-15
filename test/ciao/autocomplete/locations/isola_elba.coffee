@@ -33,4 +33,4 @@ json.geocoding.warnings.should.eql ['performance optimization: excluding \'addre
 #? inputs
 json.geocoding.query['text'].should.eql 'Isola Elba'
 json.geocoding.query['size'].should.eql 10
-json.features[0].default.should.eql 'Isola d\'Elba, Elba'
+json.features[0].properties.label.should.eql 'Isola d\'Elba'
