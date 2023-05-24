@@ -5,8 +5,9 @@ module.exports = {
         'multi_match': {
           'fields': ['phrase.default', 'phrase.en'],
           'analyzer': 'peliasQuery',
-          'type': 'phrase',
-          'slop': 3,
+          'type': 'best_fields',
+          'fuzziness': 'AUTO',
+          'minimum_should_match': '2<90%',
           'boost': 1,
           'query': '1 2'
         }
@@ -17,8 +18,9 @@ module.exports = {
           'analyzer': 'peliasQuery',
           'query': 'three',
           'boost': 1,
-          'type': 'phrase',
-          'slop': 3
+          'type': 'best_fields',
+          'fuzziness': 'AUTO',
+          'minimum_should_match': '2<90%'
         }
       }],
       'should': [

@@ -63,11 +63,6 @@ module.exports = _.merge({}, peliasQuery.defaults, {
   'multi_match:first_tokens_only:type': 'phrase',
   'multi_match:boost_exact_matches:type': 'phrase',
 
-  // full text search
-  // 'multi_match:ngrams_strict:type': 'best_fields' // (default value in ES).
-  // 'multi_match:ngrams_strict:fuzziness': 'AUTO',
-  // 'multi_match:ngrams_strict:minimum_should_match': '2<90%',
-
   // setting 'cutoff_frequency' will result in very common
   // terms such as country not scoring at all
   // 'multi_match:cutoff_frequency': 0.01,
