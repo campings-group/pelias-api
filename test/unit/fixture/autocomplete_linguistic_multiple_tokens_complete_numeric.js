@@ -3,24 +3,13 @@ module.exports = {
     'bool': {
       'must': [{
         'multi_match': {
-          'fields': ['phrase.default', 'phrase.en'],
+          'fields': ['name.default', 'name.en'],
           'analyzer': 'peliasQuery',
           'type': 'best_fields',
           'fuzziness': 'AUTO',
           'minimum_should_match': '2<90%',
           'boost': 1,
-          'query': '1 2'
-        }
-      },
-      {
-        'multi_match': {
-          'fields': ['name.default', 'name.en'],
-          'analyzer': 'peliasQuery',
-          'query': 'three',
-          'boost': 1,
-          'type': 'best_fields',
-          'fuzziness': 'AUTO',
-          'minimum_should_match': '2<90%'
+          'query': '1 2 three'
         }
       }],
       'should': [

@@ -3,7 +3,7 @@ module.exports = {
     'bool': {
       'must': [{
         'multi_match': {
-          'fields': ['phrase.default', 'phrase.en'],
+          'fields': ['name.default', 'name.en'],
           'analyzer': 'peliasQuery',
           'query': 'one',
           'boost': 1,

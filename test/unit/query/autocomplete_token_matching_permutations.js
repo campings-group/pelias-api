@@ -23,7 +23,8 @@ const views = {
   ngrams_last_token_only:     require('../../../query/view/ngrams_last_token_only'),
   ngrams_last_token_only_multi: require('../../../query/view/ngrams_last_token_only_multi')(adminFields),
   phrase_first_tokens_only:   require('../../../query/view/phrase_first_tokens_only'),
-  population: require('../../../query/view//population_custom'),
+  full_text_search: require('../../../query/view/full_text_search'),
+  population: require('../../../query/view/population_custom'),
 };
 
 module.exports.tests = {};
@@ -66,7 +67,7 @@ module.exports.tests.single_token = function(test, common) {
     var vs = vars( clean );
 
     assert( t, generate( clean ), {
-      must: [ views.ngrams_last_token_only( vs ) ],
+      must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
         views.population()(vs)
@@ -86,7 +87,7 @@ module.exports.tests.single_token = function(test, common) {
     var vs = vars( clean );
 
     assert( t, generate( clean ), {
-      must: [ views.phrase_first_tokens_only( vs ) ],
+      must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
         views.population()( vs )
@@ -106,7 +107,7 @@ module.exports.tests.single_token = function(test, common) {
     var vs = vars( clean );
 
     assert( t, generate( clean ), {
-      must: [ views.ngrams_last_token_only( vs ) ],
+      must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
         views.population()( vs )
@@ -126,7 +127,7 @@ module.exports.tests.single_token = function(test, common) {
     var vs = vars( clean );
 
     assert( t, generate( clean ), {
-      must: [ views.phrase_first_tokens_only( vs ) ],
+      must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
         views.population()( vs )
@@ -146,7 +147,7 @@ module.exports.tests.single_token = function(test, common) {
     var vs = vars( clean );
 
     assert( t, generate( clean ), {
-      must: [ views.ngrams_last_token_only( vs ) ],
+      must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
         views.population()( vs )
@@ -166,7 +167,7 @@ module.exports.tests.single_token = function(test, common) {
     var vs = vars( clean );
 
     assert( t, generate( clean ), {
-      must: [ views.phrase_first_tokens_only( vs ) ],
+      must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
         views.population()( vs )
@@ -191,8 +192,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
 
     assert( t, generate( clean ), {
       must: [
-        views.phrase_first_tokens_only( vs ),
-        views.ngrams_last_token_only_multi( vs )
+        views.full_text_search( vs ),
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
@@ -214,7 +214,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
 
     assert( t, generate( clean ), {
       must: [
-        views.phrase_first_tokens_only( vs )
+        views.full_text_search( vs )
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
@@ -238,8 +238,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
 
     assert( t, generate( clean ), {
       must: [
-        views.phrase_first_tokens_only( vs ),
-        views.ngrams_last_token_only_multi( vs )
+        views.full_text_search( vs ),
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
@@ -261,7 +260,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
 
     assert( t, generate( clean ), {
       must: [
-        views.phrase_first_tokens_only( vs )
+        views.full_text_search( vs )
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
@@ -288,8 +287,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
 
     assert( t, generate( clean ), {
       must: [
-        views.phrase_first_tokens_only( vs ),
-        views.ngrams_last_token_only_multi( vs )
+        views.full_text_search( vs ),
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
