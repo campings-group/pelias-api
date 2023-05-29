@@ -70,7 +70,7 @@ module.exports.tests.single_token = function(test, common) {
       must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()(vs)
+        views.population(vs)
       ]
     });
   });
@@ -90,7 +90,7 @@ module.exports.tests.single_token = function(test, common) {
       must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -110,7 +110,7 @@ module.exports.tests.single_token = function(test, common) {
       must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -130,7 +130,7 @@ module.exports.tests.single_token = function(test, common) {
       must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -150,7 +150,7 @@ module.exports.tests.single_token = function(test, common) {
       must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -170,7 +170,7 @@ module.exports.tests.single_token = function(test, common) {
       must: [ views.full_text_search( vs ) ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -196,7 +196,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -218,7 +218,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -242,7 +242,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -264,7 +264,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });
@@ -291,7 +291,7 @@ module.exports.tests.multiple_tokens = function(test, common) {
       ],
       should: [
         peliasQuery.view.popularity( peliasQuery.view.leaf.match_all )( vs ),
-        views.population()( vs )
+        views.population( vs )
       ]
     });
   });

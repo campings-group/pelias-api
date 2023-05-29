@@ -14,4 +14,7 @@ module.exports = _.merge({}, autocompleteDefaults, {
   'multi_match:full_text_search:minimum_should_match': '2<90%',
   'multi_match:full_text_search:boost': 1,
   'multi_match:full_text_search:field': 'name.default',
+  'multi_match:full_text_search:prefix_length': 0,
+  'multi_match:full_text_search:max_expansions': 50,
+  'multi_match:full_text_search:zero_terms_query': 'NONE',
 });

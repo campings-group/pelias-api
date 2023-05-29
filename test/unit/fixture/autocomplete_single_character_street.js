@@ -7,9 +7,8 @@ module.exports = {
           'analyzer': 'peliasQuery',
           'query': 'k road',
           'boost': 1,
-          'type': 'best_fields',
-          'fuzziness': 'AUTO',
-          'minimum_should_match': '2<90%'
+          'type': 'phrase',
+          'slop': 3
         }
       }, {
         'multi_match': {
