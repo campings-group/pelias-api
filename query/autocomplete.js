@@ -43,7 +43,7 @@ adminFields = adminFields.concat(['add_name_to_multimatch', 'add_name_lang_to_mu
 var query = new peliasQuery.layout.FilteredBooleanQuery();
 
 // mandatory matches
-query.score(views.full_text_search, 'must');
+query.score(views.full_text_search(adminFields), 'must');
 // query.score( views.phrase_first_tokens_only, 'must' );
 // query.score( views.ngrams_last_token_only_multi( adminFields ), 'must' );
 

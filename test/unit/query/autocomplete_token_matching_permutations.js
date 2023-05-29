@@ -23,7 +23,7 @@ const views = {
   ngrams_last_token_only:     require('../../../query/view/ngrams_last_token_only'),
   ngrams_last_token_only_multi: require('../../../query/view/ngrams_last_token_only_multi')(adminFields),
   phrase_first_tokens_only:   require('../../../query/view/phrase_first_tokens_only'),
-  full_text_search: require('../../../query/view/full_text_search'),
+  full_text_search: require('../../../query/view/full_text_search')(adminFields),
   population: require('../../../query/view/population_custom'),
 };
 

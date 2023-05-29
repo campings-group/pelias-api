@@ -10,7 +10,7 @@ module.exports = {
             'fuzziness': 'AUTO',
             'minimum_should_match': '2<90%',
             'boost': 1,
-            'query': 'one two',
+            'query': 'one two three',
             'prefix_length': 0,
             'max_expansions': 50,
             'zero_terms_query': 'NONE'
