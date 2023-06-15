@@ -3,17 +3,31 @@ module.exports = {
     'bool': {
       'must': [
         {
-          'multi_match': {
-            'fields': ['name.default', 'name.en'],
-            'analyzer': 'peliasQuery',
-            'query': 'test',
-            'boost': 1,
-            'type': 'best_fields',
-            'fuzziness': 'AUTO',
-            'minimum_should_match': '2<90%',
-            'prefix_length': 0,
-            'max_expansions': 50,
-            'zero_terms_query': 'NONE'
+          'bool': {
+            'should': [
+              {
+                'multi_match': {
+                  'fields': ['name.default', 'name.en'],
+                  'analyzer': 'peliasQuery',
+                  'query': 'test',
+                  'boost': 1,
+                  'type': 'best_fields',
+                  'zero_terms_query': 'NONE'
+                }
+              },
+              {
+                'multi_match': {
+                  'fields': ['pure.name.default', 'pure.name.en'],
+                  'query': 'test',
+                  'boost': 1,
+                  'type': 'best_fields',
+                  'fuzziness': 'AUTO',
+                  'minimum_should_match': '2<90%',
+                  'prefix_length': 0,
+                  'max_expansions': 50
+                }
+              }
+            ]
           }
         }
       ],

@@ -10,7 +10,9 @@ const { toMultiFields } = require('./helper');
  */
 module.exports = function(adminFields) {
   const viewName = 'full_text_search';
-  const subview = peliasQuery.view.leaf.multi_match(viewName);
+  const viewFuzzy = 'full_text_search_fuzzy';
+  const multiMatchView = peliasQuery.view.leaf.multi_match(viewName);
+  const multiMatchFuzzyView = peliasQuery.view.leaf.multi_match(viewFuzzy);
 
   return function (vs) {
     let input = vs.var('input:name').get();
@@ -20,6 +22,8 @@ module.exports = function(adminFields) {
     }
 
     // The remaining tokens (if any) are usually under admin fields
+    // Taken from admin_multimatch_last view
+    // TODO: Better way to retrieve all search terms?
     const adminProperties = adminFields.filter(
       (field) => vs.isset(`input:${field}`) && vs.isset(`admin:${field}:field`) && 
         // TODO: find a better way to omit `add_name_to_multimatch` value (`enabled`) from the query's input.
@@ -46,11 +50,22 @@ module.exports = function(adminFields) {
 
     // Using a new version of vs to make sure we are not mutating the original object
     const vsCopy = new peliasQuery.Vars(vs.export());
-
     vsCopy.var(`multi_match:${viewName}:input`).set(input);
     vsCopy.var(`multi_match:${viewName}:fields`).set(fields);
     vsCopy.var(`multi_match:${viewName}:analyzer`).set(analyzer);
 
-    return subview(vsCopy);
+    const vsFuzzy = new peliasQuery.Vars(vs.export());
+    vsFuzzy.var(`multi_match:${viewFuzzy}:input`).set(input);
+    vsFuzzy.var(`multi_match:${viewFuzzy}:fields`).set(fields.map((field) => `pure.${field}`));
+    // vsFuzzy.var(`multi_match:${viewFuzzy}:analyzer`).set(analyzer);
+
+    return {
+      bool: {
+        should: [
+          multiMatchView(vsCopy),
+          multiMatchFuzzyView(vsFuzzy)
+        ]
+      }
+    };
   };
 };
