@@ -237,6 +237,7 @@ function addRoutes(app, peliasConfig) {
       middleware.parseBBox(),
       middleware.normalizeParentIds(),
       middleware.changeLanguage(changeLanguageService, changeLanguageShouldExecute),
+      middleware.assignLabels(),
       middleware.geocodeJSON(peliasConfig.api, base),
       middleware.sendJSON
     ]),
@@ -259,6 +260,7 @@ function addRoutes(app, peliasConfig) {
       middleware.parseBBox(),
       middleware.normalizeParentIds(),
       middleware.changeLanguage(changeLanguageService, changeLanguageShouldExecute),
+      middleware.assignLabels(),
       middleware.geocodeJSON(peliasConfig.api, base),
       middleware.sendJSON
     ]),
@@ -277,6 +279,7 @@ function addRoutes(app, peliasConfig) {
       middleware.parseBBox(),
       middleware.normalizeParentIds(),
       middleware.changeLanguage(changeLanguageService, changeLanguageShouldExecute),
+      middleware.assignLabels(),
       middleware.geocodeJSON(peliasConfig.api, base),
       middleware.sendJSON
     ]),
@@ -298,6 +301,7 @@ function addRoutes(app, peliasConfig) {
       middleware.parseBBox(),
       middleware.normalizeParentIds(),
       middleware.changeLanguage(changeLanguageService, changeLanguageShouldExecute),
+      middleware.assignLabels(),
       middleware.geocodeJSON(peliasConfig.api, base),
       middleware.sendJSON
     ]),
@@ -318,6 +322,7 @@ function addRoutes(app, peliasConfig) {
       middleware.parseBBox(),
       middleware.normalizeParentIds(),
       middleware.changeLanguage(changeLanguageService, changeLanguageShouldExecute),
+      middleware.assignLabels(),
       middleware.geocodeJSON(peliasConfig.api, base),
       middleware.sendJSON
     ]),
@@ -332,6 +337,7 @@ function addRoutes(app, peliasConfig) {
       middleware.parseBBox(),
       middleware.normalizeParentIds(),
       middleware.changeLanguage(changeLanguageService, changeLanguageShouldExecute),
+      middleware.assignLabels(),
       middleware.geocodeJSON(peliasConfig.api, base),
       middleware.sendJSON
     ]),
