@@ -269,7 +269,7 @@ function addRoutes(app, peliasConfig) {
       middleware.requestLanguage,
       middleware.sizeCalculator(),
       controllers.search(peliasConfig, esclient, queries.autocomplete, not(hasResponseDataOrRequestErrors)),
-      middleware.distance('focus.point.'),
+      // middleware.distance('focus.point.'),
       middleware.confidenceScore(peliasConfig.api),
       middleware.applyOverrides(),
       middleware.dedupe(),
